@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<input type="text" placeholder="请输入任务" v-model="msg">
+	<button v-on:click="handelC">add</button>
+	<list v-bind:items="items"></list>
+</div>
+<div id="wrap2">
+	<input type="text" placeholder="请输入任务" v-model="msg">
+	<button v-on:click="handelC">add</button>
+	<list v-bind:items="items"></list>
+</div>
+</body>
+<script>
+	//vue上的component方法第一个参数是组件名，第二个是需要添加的虚拟dom
+	//是vue的静态方法
+	
+	
+	//vue是Vue的实例对象
+	//vue的每一个实例对象都是一个组件
+  var vue = new Vue({
+    el : "#wrap",
+    data : {
+      msg : "",
+	    items:[]
+    },
+	  methods:{
+      handelC(){
+        this.items.push(this.msg)
+	      this.msg=''
+      }
+	  },
+	  components:{
+      "list":{
+        props:["items"],
+	      template:   `<ul>
+											<li v-for="item in items">{{item}}</li>
+										</ul>`
+      }
+	  }
+  })
+  var vue = new Vue({
+    el : "#wrap2",
+    data : {
+      msg : "",
+      items:[]
+    },
+    methods:{
+      handelC(){
+        this.items.push(this.msg)
+        this.msg=''
+      }
+    }
+  })
+</script>
+</html>

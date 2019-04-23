@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.counter,p{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: pink;
+			text-align: center;
+			line-height: 100px;
+		}
+		p{
+			background: green;
+		}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<v-son :fn="addTatal" class="counter"></v-son>
+	<v-son :fn="addTatal" class="counter"></v-son>
+	<p>
+		{{tatal}}
+	</p>
+</div>
+</body>
+<script>
+	var vue = new Vue({
+		el : "#wrap",
+		data : {
+			tatal: 0,
+		},
+		methods:{
+		  addTatal(step){
+		    this.tatal +=step
+		  }
+		},
+		components:{
+		  "v-son":{
+		    props:{
+		      fn:Function
+		    },
+		    data(){
+		      return {
+		        num:0
+		      }
+		    },
+			  template:`<div @click="handelC">{{num}}</div>`,
+			  methods: {
+          handelC(){
+            this.num++;
+	          this.fn(1)
+          }
+			  }
+		  }
+		}
+	})
+</script>
+</html>

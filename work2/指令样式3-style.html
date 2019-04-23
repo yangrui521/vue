@@ -3,19 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
+	<style>
+		.plass{
+			color: red;
+		}
+	</style>
 	<script src="../js/vue.js"></script>
 </head>
 <body>
 <div id="wrap">
-	{{massage}}<!--插值表达式-->
+	<p :style="pStyle">
+		城市套路深，我要回农村
+	</p>
 </div>
 </body>
 <script>
 	var vue = new Vue({
 		el : "#wrap",
 		data : {
-		  massage : 'hellow world'
-		}
+		  pStyle:[{color:"red",fontSize:"50px"}]
+		},
 	})
 </script>
 </html>

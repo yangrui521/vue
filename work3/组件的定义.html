@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<table>
+		<tr is="gaoLingMei"></tr>
+		<tr is="gaoLingMei"></tr>
+	</table>
+</div>
+</body>
+<script>
+	Vue.component('gaoLingMei',{
+	  data(){
+	    return {
+	      msg:"傻子"
+	    }
+	  },
+		template:
+			`<tr>
+					<td>1-1</td>
+		      <td>1-2</td>
+			</tr>`
+	})
+	
+	
+	var vm = new Vue({
+		el:'#wrap'
+	})
+</script>
+</html>

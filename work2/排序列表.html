@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<!--获得输入框输入的值用 v-model -->
+	<input type="text" v-model="searchName">
+	<ul>
+		<li v-for="(item,index) in filterList" >
+			{{index}} --- {{item.name}} --- {{item.age}} --- {{item.wife}}
+		</li>
+	</ul>
+	<button @click="up()">按年龄升序</button>
+	<button @click="down()">按年龄降序</button>
+	<button @click="old()">按原来顺序</button>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+  var vue = new Vue({
+    el : "#wrap",
+    data : {
+      searchName:"",
+	    sortType:0,
+	    list:[
+		    {name:'yy',age:18},
+        {name:'xx',age:16},
+        {name:'vv',age:19},
+        {name:'tt',age:66},
+	    ]
+    },
+	  methods:{
+      up(){
+        this.sortType = 1
+      },
+		  down(){
+        this.sortType=2
+		  },
+		  old(){
+        this.sortType=0
+		  }
+	  },
+    /*computed 是计算属性的方法*/
+	  computed:{
+      filterList(){
+        // console.log(this.list)
+        /*filter（） 生成一个新的数组*/
+        var filterList= this.list.filter((item,index,arr)=>{
+          /*includes（） 用来判断一个数组是否包含指定的值，包含的话返回true，否则返回false*/
+          return item.name.includes(this.searchName)
+        })
+	      switch(this.sortType) {
+		      case 0 :
+		        break;
+		      case 1:
+		        filterList.sort((a,b)=>{
+		          return a.age-b.age
+		        })
+			      break;
+		      case 2:
+		        filterList.sort((a,b)=>{
+              return b.age-a.age
+		        })
+			      break;
+        }
+	      return filterList
+      }
+	  }
+  })
+</script>
+</html>

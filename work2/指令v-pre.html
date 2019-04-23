@@ -7,7 +7,12 @@
 </head>
 <body>
 <div id="wrap">
-	{{massage}}<!--插值表达式-->
+	<!--  v-pre加上不从data数据中取值  原样输出p中的内容
+	 一般用来写静态页面
+	 -->
+	<p v-pre>
+		{{massage}}
+	</p>
 </div>
 </body>
 <script>

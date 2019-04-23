@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.plass{
+			color: red;
+		}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<p :class="pClass">
+		城市套路深，我要回农村
+	</p>
+	
+	<button @click="handel">点击</button>
+	
+</div>
+</body>
+<script>
+	var vue = new Vue({
+		el : "#wrap",
+		data : {
+		  pClass:{
+        plass:false
+		  }
+		},
+		methods:{
+		  handel() {
+		    this.pClass.plass=!this.pClass.plass
+      }
+    }
+	})
+</script>
+</html>

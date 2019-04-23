@@ -7,7 +7,8 @@
 </head>
 <body>
 <div id="wrap">
-	{{massage}}<!--插值表达式-->
+	<button @click="handel(massage)">点击</button>
+	<p v-text="massage"></p>
 </div>
 </body>
 <script>
@@ -15,7 +16,12 @@
 		el : "#wrap",
 		data : {
 		  massage : 'hellow world'
-		}
+		},
+		methods:{
+		  handel(massage) {
+		    console.log(massage)
+      }
+    }
 	})
 </script>
 </html>

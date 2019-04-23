@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<input type="text" placeholder="请输入任务" v-model="msg">
+	<button v-on:click="handelC">add</button>
+	<ul>
+		<li v-for="item in items">{{item}}</li>
+	</ul>
+</div>
+</body>
+<script>
+	//vue是Vue的实例对象
+  var vue = new Vue({
+    el : "#wrap",
+    data : {
+      msg : "",
+	    items:[]
+    },
+	  methods:{
+      handelC(){
+        this.items.push(this.msg)
+	      this.msg=''
+      }
+	  }
+  })
+</script>
+</html>

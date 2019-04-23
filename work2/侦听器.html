@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	fristName: <input type="text" v-model="fristName"/><br>
+	lastName: <input type="text" v-model="lastName"/><br>
+	fullName: <input type="text" v-model="fullName"/><br>
+
+</div>
+</body>
+<script>
+	var vue = new Vue({
+		el : "#wrap",
+		data : {
+		  fristName:'T',
+			lastName:'om',
+			fullName:'T-om'
+    },
+    // watch:{
+    //   firstName(newVal,oldVal){
+    //     this.fullName = newVal +"-"+this.lastName
+    //   },
+    //   lastName(newVal,oldVal){
+    //     this.fullName = this.firstName + "-" + newVal
+    //   }
+    // }
+	})
+	vue.$watch('fristName',function (nVal,oVal) {
+		this.fullName=nVal+'-'+this.lastName
+  })
+  vue.$watch('lastName',function (nVal,oVal) {
+    this.fullName=this.fristName+'-'+nVal
+  })
+</script>
+</html>

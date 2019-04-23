@@ -7,7 +7,16 @@
 </head>
 <body>
 <div id="wrap">
-	{{massage}}<!--插值表达式-->
+	<!--  v-cloak 用来防止加载页面出现闪屏
+	一般再vue.js加载时用,重复执行
+	 -->
+	<p v-cloak>
+		{{massage}}
+		{{massage}}
+		{{massage}}
+		{{massage}}
+		{{massage}}
+	</p>
 </div>
 </body>
 <script>

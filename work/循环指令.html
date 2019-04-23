@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<ul>
+		<li v-for="(item,index) in list">
+			{{index}}:{{item}}
+		</li>
+		<li v-for="(val,key,index) in obj" v-bind:key="val"></li>
+	</ul>
+</div>
+</body>
+<script>
+	var vue = new Vue({
+		el : "#wrap",
+		data : {
+		  list:[1,2,3,4],
+			obj:{
+        name:"damu",
+        age:18,
+        wife:"周冬雨",
+        son:"王思聪"
+			}
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<!--获得输入框输入的值用 v-model -->
+	<input type="text" v-model="searchName">
+	<button @click="handelClick()">点击</button>
+	<ul>
+		<li v-for="(item,index) in filterList" >
+			{{index}} --- {{item.name}} --- {{item.age}} --- {{item.wife}}
+		</li>
+	</ul>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+  var vue = new Vue({
+    el : "#wrap",
+    data : {
+      searchName:"",
+	    list:[
+		    {name:'yy',age:18},
+        {name:'xx',age:16},
+        {name:'vv',age:19},
+        {name:'tt',age:66},
+	    ]
+    },
+    /*computed 是计算属性的方法*/
+	  computed:{
+      filterList(){
+        /*filter（） 生成一个新的数组*/
+        return this.list.filter((item,index,arr)=>{
+          /*includes（） 用来判断一个数组是否包含指定的值，包含的话返回true，否则返回false*/
+          return item.name.includes(this.searchName)
+        })
+      }
+	  }
+  })
+</script>
+</html>
